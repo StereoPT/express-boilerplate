@@ -1,8 +1,18 @@
 const express = require('express');
+const morgan = require('morgan');
+const helmet = require('helmet');
+const cors = require('cors');
 
 require('dotenv').config();
 
 const server = express();
+
+server.use(morgan('common'));
+server.use(helmet());
+server.use(cors({
+  origin: process.env.CORS_ORIGIN
+}));
+server.use(express.json());
 
 console.log('[Express.js Boilerplate]');
 
