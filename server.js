@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-
+const apiRoute = require('./routes/api');
 const middlewares = require('./routes/middlewares');
 
 const server = express();
@@ -23,6 +23,8 @@ server.get('/', (req, res) => {
     message: 'Express.js Boilerplate',
   });
 });
+
+server.use('/api', apiRoute);
 
 server.use(middlewares.notFound);
 server.use(middlewares.errorHandler);
