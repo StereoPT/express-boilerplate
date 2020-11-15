@@ -1,9 +1,11 @@
 const express = require('express');
+require('dotenv').config();
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-require('dotenv').config();
+
+const middlewares = require('./routes/middlewares');
 
 const server = express();
 
@@ -21,6 +23,9 @@ server.get('/', (req, res) => {
     message: 'Express.js Boilerplate',
   });
 });
+
+server.use(middlewares.notFound);
+server.use(middlewares.errorHandler);
 
 const port = process.env.PORT || 1337;
 server.listen(port, () => {
