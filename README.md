@@ -1,1 +1,1 @@
-express-boilerplate
+[![Express Logo](https://github.com/StereoPT/express-boilerplate/logo.png)](http://expressjs.com/)
